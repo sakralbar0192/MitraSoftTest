@@ -1,11 +1,44 @@
-import { type FC } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import Offcanvas from 'react-bootstrap/Offcanvas'
+import Burger_menu from '../assets/menu_burger.svg'
+import classes from './style.module.scss'
+import { NavLink } from 'react-router-dom'
 
-export const AppHeader: FC = () => {
+export const AppHeader = () => {
+    const [show, setShow] = useState(false)
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
+
     return (
-        <>
-            <Link to=''>Posts</Link>
-            <Link to='AboutMe'>About me</Link>
-        </>
+        <div className={ classes.header }>
+            <button
+                type='button'
+                onClick={ handleShow }
+                className={ classes.burgerMenuButton }
+            >
+                <Burger_menu />
+            </button>
+
+            <Offcanvas show={ show } onHide={ handleClose }>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title></Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body className={ classes.sidebarContainer }>
+                    <NavLink
+                        className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
+                        to=''
+                    >
+                        Posts page
+                    </NavLink>
+                    <NavLink
+                        className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
+                        to='AboutMe'
+                    >
+                        About me
+                    </NavLink>
+                </Offcanvas.Body>
+            </Offcanvas>
+        </div>
     )
 }

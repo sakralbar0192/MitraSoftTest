@@ -4,6 +4,7 @@
     "es2020": true 
   },
   "extends": [
+	"plugin:react/jsx-runtime",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended"
@@ -14,6 +15,7 @@
     "sourceType": "module"
   },
   "plugins": [
+	"react",
     "react-refresh"
   ],
   "rules": {
@@ -50,6 +52,20 @@
 		"error",
 		{
 			"max": 1
+		}
+	],
+	"react/function-component-definition": [
+		2,
+		{ 
+			"namedComponents": "arrow-function"
+		}
+	],
+	"react/jsx-curly-spacing": [
+		2,
+		"always",
+		{
+			"allowMultiline": false,
+			"spacing": {"objectLiterals": "always"}
 		}
 	]
   }
