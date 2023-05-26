@@ -1,14 +1,17 @@
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { fetchPostsAsync } from 'app/store/slices/postsSlice'
 import { useEffect, type FC } from 'react'
-import { Loader } from 'shared/ui/Loader/ui/Loader'
+import { Loader } from 'shared/ui/Loader'
 import { ErrorPlug } from 'widgets/ErrorPlug'
-import { PostCard } from 'widgets/PostCard'
+import classes from './style.module.scss'
+import { PostsList } from 'entities/Posts/ui/PostsList'
+import { PostsFilters } from 'widgets/PostsFilters'
+import { PostsPagination } from 'widgets/PostsPagination'
 
 export const PostsPage: FC = () => {
     const isLoading = useAppSelector(state => state.posts.isLoading)
     const isError = useAppSelector(state => state.posts.isError)
-    const posts = useAppSelector(state => state.posts.posts)
+    const isPostsRequested = useAppSelector(state => state.posts.isPostsRequested)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -16,16 +19,22 @@ export const PostsPage: FC = () => {
     }, [])
 
     return (
-        <>
+        <div className={ classes.postsPage }>
             {
-                isLoading
-                    ? <Loader />
-                    : isError
-                        ? <ErrorPlug />
-                        : posts
-                            ? posts.map(post => <PostCard key={ post.id } post={ post } />)
-                            : 'nothing to display'
+                isPostsRequested
+                    ? isLoading
+                        ? <Loader />
+                        : isError
+                            ? <ErrorPlug />
+                            : (
+                                <>
+                                    <PostsFilters />
+                                    <PostsList />
+                                    <PostsPagination />
+                                </>
+                            )
+                    : ''
             }
-        </>
+        </div>
     )
 }

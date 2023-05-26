@@ -1,19 +1,28 @@
 import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit'
+import { splitPosts } from 'entities/Posts/helpers/splitPosts'
 import { IPostItem } from 'entities/Posts/types'
 import { DEFAULT_ERROR_MESSAGE } from 'shared/consts'
 
 export interface postsSliceInitialState {
-    posts: IPostItem[],
-    isLoading: boolean,
-    isError: boolean,
+    posts: IPostItem[]
+    splitedPosts: IPostItem[][]
+    isPostsRequested: boolean
+    isLoading: boolean
+    isError: boolean
     message: string
+    activePaginationIndex: number,
+    displayedPostsCount: number
 }
 
 const initialState: postsSliceInitialState = {
     posts: [],
+    splitedPosts: [],
+    isPostsRequested: false,
     isLoading: false,
     isError: false,
-    message: ''
+    message: '',
+    activePaginationIndex: 0,
+    displayedPostsCount: 10
 }
 
 const name = 'posts'
@@ -27,14 +36,17 @@ const postsSlice = createSlice({
         requestPosts: (state) => {
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isPostsRequested: true
             }
         },
         requestPostsSucceeded: (state, action: PayloadAction<IPostItem[]>) => {
             return {
                 ...state,
                 posts: action.payload,
-                isLoading: false
+                splitedPosts: splitPosts(action.payload, state.displayedPostsCount),
+                isLoading: false,
+                activePaginationIndex: 0
             }
         },
         requestPostsFailed: (state, action: PayloadAction<string>) => {
@@ -45,9 +57,20 @@ const postsSlice = createSlice({
                 message: action.payload || DEFAULT_ERROR_MESSAGE
             }
         },
+        changeActivePaginationIndex: (state, action: PayloadAction<number>) => {
+            return {
+                ...state,
+                activePaginationIndex: action.payload
+            }
+        }
     }
 })
 
-export const { requestPosts, requestPostsFailed, requestPostsSucceeded } = postsSlice.actions
+export const {
+    requestPosts,
+    requestPostsFailed,
+    requestPostsSucceeded,
+    changeActivePaginationIndex
+} = postsSlice.actions
 
 export default postsSlice.reducer
