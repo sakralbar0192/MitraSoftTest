@@ -5,6 +5,7 @@ import { Pagination } from 'react-bootstrap'
 import classes from './style.module.scss'
 
 export const PostsPagination: FC = () => {
+    const MIN_POSTS_ARRAY_FOR_DISPLAYED_PAGINATION = 2
     const splitedPosts = useAppSelector(state => state.posts.splitedPosts)
     const activePaginationIndex = useAppSelector(state => state.posts.activePaginationIndex)
     const dispatch = useAppDispatch()
@@ -24,7 +25,11 @@ export const PostsPagination: FC = () => {
 
     return (
         <div className={ classes.pagination }>
-            <Pagination size='lg'>{items}</Pagination>
+            {
+                splitedPosts.length < MIN_POSTS_ARRAY_FOR_DISPLAYED_PAGINATION
+                    ? ''
+                    : <Pagination size='lg'>{items}</Pagination>
+            }
         </div>
     )
 }

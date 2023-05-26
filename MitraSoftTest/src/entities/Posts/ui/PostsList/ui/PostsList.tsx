@@ -9,7 +9,11 @@ export const PostsList: FC = () => {
 
     return (
         <div className={ classes.postList }>
-            { [...splitedPosts[activePaginationIndex]].map(post => <PostCard key={ post.id } post={ post } />) }
+            {
+                splitedPosts.length
+                    ? [...splitedPosts[activePaginationIndex]].map(post => <PostCard key={ post.id } post={ post } />)
+                    : 'Nothing to display'
+            }
         </div>
     )
 }

@@ -62,6 +62,12 @@ const postsSlice = createSlice({
                 ...state,
                 activePaginationIndex: action.payload
             }
+        },
+        changeSplitedPosts: (state, action: PayloadAction<IPostItem[][]>) => {
+            return {
+                ...state,
+                splitedPosts: action.payload
+            }
         }
     }
 })
@@ -70,7 +76,8 @@ export const {
     requestPosts,
     requestPostsFailed,
     requestPostsSucceeded,
-    changeActivePaginationIndex
+    changeActivePaginationIndex,
+    changeSplitedPosts
 } = postsSlice.actions
 
 export default postsSlice.reducer

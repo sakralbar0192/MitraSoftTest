@@ -28,9 +28,15 @@ export const PostsPage: FC = () => {
                             ? <ErrorPlug />
                             : (
                                 <>
-                                    <PostsFilters />
-                                    <PostsList />
-                                    <PostsPagination />
+                                    <div className={ classes.filters }>
+                                        <PostsFilters />
+                                    </div>
+                                    <div className={ classes.list }>
+                                        <PostsList />
+                                    </div>
+                                    <div className={ classes.pagination }>
+                                        <PostsPagination />
+                                    </div>
                                 </>
                             )
                     : ''
