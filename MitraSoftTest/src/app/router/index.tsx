@@ -1,4 +1,4 @@
-import { createBrowserRouter, defer } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import { PostsPage } from 'pages/PostsPage'
 import { AboutMePage } from 'pages/AboutMePage'
 import { AboutUserPage } from 'pages/AboutUserPage'
@@ -12,11 +12,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'AboutMe',
-                element: <AboutMePage />,
-                loader: async () => {
-                    const comments = new Promise(res=> setTimeout(() => res('lol'), 3000))
-                    return defer({ comments })
-                }
+                element: <AboutMePage />
             },
             {
                 path: 'AboutUser',

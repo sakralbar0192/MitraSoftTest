@@ -5,7 +5,7 @@ export const AboutMePage: FC = () => {
     const { comments } = useLoaderData() as {comments: string}
 
     return (
-        <Suspense fallback="Loading...">
+        <Suspense fallback='Loading...'>
             <div>AboutMePage</div>
             <Await
                 resolve={ comments }
