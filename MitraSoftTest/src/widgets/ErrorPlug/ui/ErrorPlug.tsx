@@ -6,7 +6,7 @@ export const ErrorPlug: FC = () => {
     return (
         <Alert variant='danger' className='container'>
             {DEFAULT_ERROR_MESSAGE}
-            <p>Try to reloa page</p>
+            <p>Try to reload page</p>
             <Button
                 variant='primary'
                 onClick={ () => window.location.reload() }

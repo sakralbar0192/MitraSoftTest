@@ -6,7 +6,7 @@ import { ICommentItem } from 'entities/Comments/types'
 
 export type IGetCommentsForPostResponse = IResponse<ICommentItem[]>
 
-export async function getCommentsForPost(postId: number) {
+export async function getCommentsForPost(postId: number): Promise<IGetCommentsForPostResponse> {
     const commentsResponse: IGetCommentsForPostResponse = {
         isSucceeded: false
     }
