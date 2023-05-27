@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { fetchPostsAsync } from 'app/store/slices/postsSlice'
 import { useEffect, type FC } from 'react'
-import { Loader } from 'shared/ui/Loader'
+import { Loader } from 'widgets/Loader'
 import { ErrorPlug } from 'widgets/ErrorPlug'
 import classes from './style.module.scss'
 import { PostsList } from 'entities/Posts/ui/PostsList'
@@ -15,7 +15,7 @@ export const PostsPage: FC = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(fetchPostsAsync())
+        if (!isPostsRequested) dispatch(fetchPostsAsync())
     }, [])
 
     return (
@@ -28,9 +28,7 @@ export const PostsPage: FC = () => {
                             ? <ErrorPlug />
                             : (
                                 <>
-                                    <div className={ classes.filters }>
-                                        <PostsFilters />
-                                    </div>
+                                    <PostsFilters />
                                     <div className={ classes.list }>
                                         <PostsList />
                                     </div>

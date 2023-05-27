@@ -1,4 +1,4 @@
-import { useState, type FC, ChangeEvent } from 'react'
+import { useState, type FC, ChangeEvent, useMemo } from 'react'
 import classes from './style.module.scss'
 import { Dropdown, Form } from 'react-bootstrap'
 import { TValueOf } from 'shared/types'
@@ -9,8 +9,10 @@ import { changeSplitedPosts } from 'app/store/slices/postsSlice'
 import { filterPostsByTitile } from 'entities/Posts/helpers/filterPostsByTitile'
 
 export const PostsFilters: FC = () => {
+    const DEFAULT_DROPDOWN_LABEL = 'Sort alphabetically'
     const MIN_CHARACTERS_FOR_SEARCH = 2
     const posts = useAppSelector(state => state.posts.posts)
+    const splitedPosts = useAppSelector(state => state.posts.splitedPosts)
     const displayedPostsCount = useAppSelector(state => state.posts.displayedPostsCount)
     const dispatch = useAppDispatch()
 
@@ -20,9 +22,11 @@ export const PostsFilters: FC = () => {
     }
     type ESortingOrders = TValueOf<typeof ESortingOrders>
 
-    const [sortOrder, setSortOrder] = useState<ESortingOrders>()
+    const [sortOrder, setSortOrder] = useState<ESortingOrders | typeof DEFAULT_DROPDOWN_LABEL>(DEFAULT_DROPDOWN_LABEL)
+    const [searchString, setSearchString] = useState<string>('')
 
     const chooseSortOrderHandler = (sortOrder: ESortingOrders) => {
+        setSearchString('')
         setSortOrder(sortOrder)
         const sortedPosts = sortPostsAlphabetically(posts, sortOrder === ESortingOrders.asc)
         const splitedPosts = splitPosts(sortedPosts, displayedPostsCount)
@@ -31,17 +35,27 @@ export const PostsFilters: FC = () => {
 
     const searchFieldInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
-
-        const filteredPosts = value.length < MIN_CHARACTERS_FOR_SEARCH
-            ? posts
-            : filterPostsByTitile(posts, value)
-        const splitedPosts = splitPosts(filteredPosts, displayedPostsCount)
-        dispatch(changeSplitedPosts(splitedPosts))
+        setSearchString(value)
+        let newSplitedPosts
+        if (value.length < MIN_CHARACTERS_FOR_SEARCH) {
+            if (sortOrder !== DEFAULT_DROPDOWN_LABEL) {
+                const sortedPosts = sortPostsAlphabetically(posts, sortOrder === ESortingOrders.asc)
+                newSplitedPosts = splitPosts(sortedPosts, displayedPostsCount)
+            } else {
+                newSplitedPosts = splitPosts(posts, displayedPostsCount)
+            }
+        } else {
+            setSortOrder(DEFAULT_DROPDOWN_LABEL)
+            const filteredPosts = filterPostsByTitile(posts, value)
+            newSplitedPosts = splitPosts(filteredPosts, displayedPostsCount)
+        }
+        dispatch(changeSplitedPosts(newSplitedPosts))
     }
 
     return (
         <div className={ classes.filters }>
             <Form.Control
+                value={ searchString }
                 size='lg'
                 type='search'
                 placeholder='Search in post title'
@@ -51,7 +65,7 @@ export const PostsFilters: FC = () => {
             <Dropdown>
                 <Dropdown.Toggle variant='success'>
                     {
-                        sortOrder || 'Sort alphabetically'
+                        sortOrder
                     }
                 </Dropdown.Toggle>
 
