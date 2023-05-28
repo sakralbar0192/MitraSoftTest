@@ -1,9 +1,14 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { LoaderFunctionArgs, createBrowserRouter, defer } from 'react-router-dom'
 import { PostsPage } from 'pages/PostsPage'
 import { AboutMePage } from 'pages/AboutMePage'
 import { AboutUserPage } from 'pages/AboutUserPage'
 import { ErrorBoundary } from 'pages/ErrorBoundary'
 import App from 'app/App'
+import { getUser } from 'app/api/getUser'
+
+interface IAboutUserPageLoaderArgs extends LoaderFunctionArgs {
+    userId?: number
+}
 
 const router = createBrowserRouter([
     {
@@ -15,8 +20,9 @@ const router = createBrowserRouter([
                 element: <AboutMePage />
             },
             {
-                path: 'AboutUser',
-                element: <AboutUserPage />
+                path: 'AboutUser/:userId',
+                element: <AboutUserPage />,
+                loader: ({ params }: IAboutUserPageLoaderArgs) => defer({ response: getUser(params.userId) })
             },
             {
                 path: '',

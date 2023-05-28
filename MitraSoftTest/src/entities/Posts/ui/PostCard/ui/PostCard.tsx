@@ -11,10 +11,11 @@ export interface IPostCardProps {
 }
 
 export const PostCard: FC<IPostCardProps> = ({ post }) => {
+
     return (
         <Card style={ { width: '400px' } }>
             <Card.Header as='h5' className={ classes.header }>
-                <Link to='AboutUser'>
+                <Link to={ `AboutUser/${post.userId}` } >
                     <User_avatar />
                 </Link>
                 {post.title}
