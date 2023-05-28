@@ -12,6 +12,8 @@ export const PostsPage: FC = () => {
     const isLoading = useAppSelector(state => state.posts.isLoading)
     const isError = useAppSelector(state => state.posts.isError)
     const isPostsRequested = useAppSelector(state => state.posts.isPostsRequested)
+    const activePaginationIndex = useAppSelector(state => state.posts.activePaginationIndex)
+    const splitedPosts = useAppSelector(state => state.posts.splitedPosts)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -30,7 +32,7 @@ export const PostsPage: FC = () => {
                                 <>
                                     <PostsFilters />
                                     <div className={ classes.list }>
-                                        <PostsList />
+                                        <PostsList posts={ splitedPosts[activePaginationIndex] } />
                                     </div>
                                     <div className={ classes.pagination }>
                                         <PostsPagination />

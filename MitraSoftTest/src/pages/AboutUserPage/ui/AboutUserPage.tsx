@@ -5,9 +5,10 @@ import { ErrorPlug } from 'widgets/ErrorPlug'
 import { Loader } from 'widgets/Loader'
 import { IGetUserResponse } from 'app/api/getUser'
 import classes from './styles.module.scss'
+import { UserPostsList } from 'widgets/UserPostsList/ui/UserPostsList'
 
 export const AboutUserPage: FC = () => {
-    const { response } = useLoaderData() as {response: IGetUserResponse | null}
+    const { response } = useLoaderData() as { response: IGetUserResponse | null }
 
     return (
         <Suspense fallback={ <Loader /> } >
@@ -16,9 +17,16 @@ export const AboutUserPage: FC = () => {
                 <Await
                     resolve={ response }
                     errorElement={ <ErrorPlug /> }
-                >
-                    <UserCard />
-                </Await>
+                    children={ (awaitedResponse: IGetUserResponse | null) => {
+                        return awaitedResponse && awaitedResponse.isSucceeded && awaitedResponse.data
+                            ? <>
+                                <UserCard user={ awaitedResponse.data }/>
+                                <UserPostsList userId={ awaitedResponse.data.id }/>
+                            </>
+                            : <ErrorPlug />
+
+                    } }
+                />
             </div>
         </Suspense>
     )

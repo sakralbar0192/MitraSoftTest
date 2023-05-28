@@ -1,17 +1,18 @@
 import { type FC } from 'react'
 import { PostCard } from 'entities/Posts/ui/PostCard'
-import { useAppSelector } from 'app/hooks'
 import classes from './style.module.scss'
+import { IPostItem } from 'entities/Posts/types'
 
-export const PostsList: FC = () => {
-    const activePaginationIndex = useAppSelector(state => state.posts.activePaginationIndex)
-    const splitedPosts = useAppSelector(state => state.posts.splitedPosts)
+interface IPostsListProps {
+    posts: IPostItem[]
+}
 
+export const PostsList: FC<IPostsListProps> = ({ posts }) => {
     return (
         <div className={ classes.postList }>
             {
-                splitedPosts.length
-                    ? [...splitedPosts[activePaginationIndex]].map(post => <PostCard key={ post.id } post={ post } />)
+                posts.length
+                    ? posts.map(post => <PostCard key={ post.id } post={ post } />)
                     : 'Nothing to display'
             }
         </div>

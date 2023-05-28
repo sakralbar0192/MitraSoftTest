@@ -49,7 +49,7 @@ export const CommentsBlock: FC<ICommentsBlockProps> = ({ postId }) => {
                                     : comments
                                         ? comments.map(comment => {
                                             return (
-                                                <div className={ classes.commentsWrapper }>
+                                                <div key={ comment.id } className={ classes.commentsWrapper }>
                                                     <CommentCard comment={ comment } />
                                                 </div>
                                             )
