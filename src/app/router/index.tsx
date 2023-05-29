@@ -1,13 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import { Main } from 'pages/Main'
 import { AboutMe } from 'pages/AboutMe'
 import { UserInfo } from 'pages/UserInfo'
 import { ErrorBoundary } from 'pages/ErrorBoundary'
 import App from 'app/App'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
-        path: '/MitraSoftTest',
+        path: '/',
         element: <App />,
         children: [
             {
