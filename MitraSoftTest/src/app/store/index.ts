@@ -1,18 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import postsSlice from './slices/postsSlice'
 import createSagaMiddleware from 'redux-saga'
-import usersSlice from './slices/usersSlice'
 import rootSaga from './sagas/rootSaga'
+import mainSlice from './slices/mainSlice'
 
 const sagaMiddleware = createSagaMiddleware()
 
 export const store = configureStore({
     reducer: {
-        posts: postsSlice,
-        users: usersSlice
-
+        main: mainSlice
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+    middleware: ( getDefaultMiddleware ) => getDefaultMiddleware({ thunk: false }).concat( sagaMiddleware ),
 })
 
 sagaMiddleware.run(rootSaga)

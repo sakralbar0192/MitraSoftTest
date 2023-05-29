@@ -10,6 +10,9 @@ export async function getAllPosts(): Promise<IGetAllPostsResponse> {
     const allPostsResponse: IGetAllPostsResponse = {
         isSucceeded: false
     }
+
+    await new Promise(res=> setTimeout(() => res(true), 500))
+
     return axios.get(EApiMethods.GET_ALL_POSTS)
         .then(function (response) {
             if (response.status === SUCCESS_RESPONSE_STATUS) {

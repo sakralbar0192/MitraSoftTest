@@ -7,19 +7,17 @@ import { NOT_FOUND_PAGE_STATUS } from 'shared/consts'
 export const ErrorBoundary: FC = () => {
     const error = useRouteError()
 
-    if (isRouteErrorResponse(error) && error.status === NOT_FOUND_PAGE_STATUS) {
-        return (
-            <div className={ classes.errorPage }>
-                <div>
-                    Requested page not exist
-                    <br/>
-                    <Link to='/'>Home</Link>
-                </div>
-            </div>
-        )
-    } else return (
+    return (
         <div className={ classes.errorPage }>
-            <ErrorPlug />
+            {
+                isRouteErrorResponse(error) && error.status === NOT_FOUND_PAGE_STATUS
+                    ? <div>
+                        Requested page not exist
+                        <br/>
+                        <Link to='/'>Home</Link>
+                    </div>
+                    : <ErrorPlug />
+            }
         </div>
     )
 }

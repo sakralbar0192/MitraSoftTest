@@ -7,17 +7,21 @@ import classes from './style.module.scss'
 import { CommentsBlock } from 'widgets/CommentsBlock'
 
 export interface IPostCardProps {
-    post: IPostItem
+    post: IPostItem,
+    showAvatar?: boolean
 }
 
-export const PostCard: FC<IPostCardProps> = ({ post }) => {
+export const PostCard: FC<IPostCardProps> = ({ post, showAvatar = true }) => {
 
     return (
         <Card style={ { width: '400px' } }>
             <Card.Header as='h5' className={ classes.header }>
-                <Link to={ `AboutUser/${post.userId}` } >
-                    <User_avatar />
-                </Link>
+                {
+                    showAvatar &&
+                        <Link to={ `UserInfo/${post.userId}` } >
+                            <User_avatar />
+                        </Link>
+                }
                 {post.title}
             </Card.Header>
             <Card.Body>

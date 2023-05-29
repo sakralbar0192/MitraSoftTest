@@ -6,12 +6,12 @@ import { IUserItem } from 'entities/Users/types'
 
 export type IGetUserResponse = IResponse<IUserItem>
 
-export async function getUser(userId?: string): Promise<IGetUserResponse> {
+export async function getUser(userId: number): Promise<IGetUserResponse> {
     const getUserResponse: IGetUserResponse = {
         isSucceeded: false
     }
 
-    await new Promise(res=> setTimeout(() => res(true), 3000))
+    await new Promise(res=> setTimeout(() => res(true), 500))
 
     if (!userId) return getUserResponse
 

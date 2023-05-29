@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import classes from './styles.module.scss'
 
-export const AboutMePage: FC = () => {
+export const AboutMe: FC = () => {
 
     return (
         <div className={ classes.aboutMeWrapper }>

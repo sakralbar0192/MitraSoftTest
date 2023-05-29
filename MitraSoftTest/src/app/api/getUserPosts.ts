@@ -11,6 +11,8 @@ export async function getUserPosts(userId: number): Promise<IGetUserPostsRespons
         isSucceeded: false
     }
 
+    await new Promise(res=> setTimeout(() => res(true), 500))
+
     return axios.get(EApiMethods.GET_USERS_POSTS, {
         params: {
             userId

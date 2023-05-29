@@ -1,26 +1,24 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { IGetAllPostsResponse, getAllPosts } from 'app/api/getAllPosts'
-import { fetchPostsAsync, requestPosts, requestPostsFailed, requestPostsSucceeded } from '../slices/postsSlice'
 import { DEFAULT_ERROR_MESSAGE } from 'shared/consts'
+import { fetchPosts, fetchPostsAsync, fetchPostsFailed, fetchPostsSucceeded } from '../slices/mainSlice'
 
-function* fetchPosts() {
+function* asyncFetchPosts() {
     try {
-        yield put(requestPosts())
+        yield put(fetchPosts())
         const response: IGetAllPostsResponse = yield call(getAllPosts)
         yield new Promise(res=> setTimeout(() => res(true), 500))
         if (response.isSucceeded) {
-            yield put(requestPostsSucceeded(response.data || []))
+            yield put(fetchPostsSucceeded(response.data || []))
         } else {
-            yield put(requestPostsFailed(response.message || DEFAULT_ERROR_MESSAGE))
+            yield put(fetchPostsFailed(response.message || DEFAULT_ERROR_MESSAGE))
         }
 
     } catch (e) {
-        yield put(requestPostsFailed(DEFAULT_ERROR_MESSAGE))
+        yield put(fetchPostsFailed(DEFAULT_ERROR_MESSAGE))
     }
 }
 
-function* fetchPostsSaga() {
-    yield takeLatest(fetchPostsAsync, fetchPosts)
+export function* fetchPostsSaga() {
+    yield takeLatest(fetchPostsAsync, asyncFetchPosts)
 }
-
-export default fetchPostsSaga

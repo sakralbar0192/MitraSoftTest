@@ -10,13 +10,15 @@ export async function getCommentsForPost(postId: number): Promise<IGetCommentsFo
     const commentsResponse: IGetCommentsForPostResponse = {
         isSucceeded: false
     }
+
+    await new Promise(res=> setTimeout(() => res(true), 500))
+
     return axios.get(EApiMethods.GET_COMMENTS_BY_POST, {
         params: {
             postId
         }
     })
         .then(function (response) {
-            console.log(response)
             if (response.status === SUCCESS_RESPONSE_STATUS) {
                 commentsResponse.isSucceeded = true
                 commentsResponse.data = response.data
