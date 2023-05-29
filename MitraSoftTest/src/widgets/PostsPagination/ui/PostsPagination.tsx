@@ -3,6 +3,7 @@ import { type FC } from 'react'
 import { Pagination } from 'react-bootstrap'
 import classes from './style.module.scss'
 import { changeActivePaginationIndex } from 'app/store/slices/mainSlice'
+import { FIRST_ARRAY_ITEM_INDEX } from 'shared/consts'
 
 export const PostsPagination: FC = () => {
     const MIN_POSTS_ARRAY_FOR_DISPLAYED_PAGINATION = 2
@@ -23,7 +24,7 @@ export const PostsPagination: FC = () => {
                                         splitedPosts.map((item, index) => {
                                             return (
                                                 <Pagination.Item
-                                                    key={ index }
+                                                    key={ item[FIRST_ARRAY_ITEM_INDEX].id }
                                                     active={ index === activePaginationIndex }
                                                     onClick={ () => {dispatch(changeActivePaginationIndex(index))} }
                                                 >

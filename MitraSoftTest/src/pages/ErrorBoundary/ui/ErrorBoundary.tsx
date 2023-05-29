@@ -2,7 +2,7 @@ import { type FC } from 'react'
 import { Link, useRouteError, isRouteErrorResponse } from 'react-router-dom'
 import { ErrorPlug } from 'widgets/ErrorPlug'
 import classes from './styles.module.scss'
-import { NOT_FOUND_PAGE_STATUS } from 'shared/consts'
+import { DEFAULT_ERROR_MESSAGE, NOT_FOUND_PAGE_STATUS } from 'shared/consts'
 
 export const ErrorBoundary: FC = () => {
     const error = useRouteError()
@@ -16,7 +16,7 @@ export const ErrorBoundary: FC = () => {
                         <br/>
                         <Link to='/'>Home</Link>
                     </div>
-                    : <ErrorPlug />
+                    : <ErrorPlug message={ DEFAULT_ERROR_MESSAGE } />
             }
         </div>
     )
