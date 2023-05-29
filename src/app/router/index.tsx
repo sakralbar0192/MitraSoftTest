@@ -7,7 +7,7 @@ import App from 'app/App'
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/MitraSoftTest',
         element: <App />,
         children: [
             {
