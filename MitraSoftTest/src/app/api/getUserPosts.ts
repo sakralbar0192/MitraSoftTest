@@ -30,7 +30,6 @@ export async function getUserPosts(userId: number): Promise<IGetUserPostsRespons
 
         })
         .catch(function () {
-            console.log(';')
             return {
                 isSucceeded: false,
                 message: REQUEST_FAILED_MESSAGE

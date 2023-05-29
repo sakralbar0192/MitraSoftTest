@@ -6,14 +6,15 @@ import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { sortPostsAlphabetically } from 'entities/Posts/helpers/sortPostsAlphabetically'
 import { splitPosts } from 'entities/Posts/helpers/splitPosts'
 import { filterPostsByTitle } from 'entities/Posts/helpers/filterPostsByTitle'
-import { changeSplitedPosts } from 'app/store/slices/mainSlice'
+import { changeSplitedPosts } from 'app/store/slices/postsSlice'
+import { resetActivePaginationIndex } from 'app/store/slices/mainSlice'
 
 export const PostsFilters: FC = () => {
     const DEFAULT_DROPDOWN_LABEL = 'Sort alphabetically'
     const MIN_CHARACTERS_FOR_SEARCH = 2
 
-    const posts = useAppSelector(state => state.main.posts)
-    const displayedPostsCount = useAppSelector(state => state.main.displayedPostsCount)
+    const posts = useAppSelector(state => state.posts.posts)
+    const displayedPostsCount = useAppSelector(state => state.posts.displayedPostsCount)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -39,6 +40,7 @@ export const PostsFilters: FC = () => {
             const sortedPosts = sortPostsAlphabetically(posts, sortOrder === ESortingOrders.asc)
             const splitedPosts = splitPosts(sortedPosts, displayedPostsCount)
             dispatch(changeSplitedPosts(splitedPosts))
+            dispatch(resetActivePaginationIndex())
         }
     }
 
@@ -60,6 +62,7 @@ export const PostsFilters: FC = () => {
                 newSplitedPosts = splitPosts(filteredPosts, displayedPostsCount)
             }
             dispatch(changeSplitedPosts(newSplitedPosts))
+            dispatch(resetActivePaginationIndex())
         }
     }
 

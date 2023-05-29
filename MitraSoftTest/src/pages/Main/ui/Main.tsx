@@ -6,17 +6,17 @@ import classes from './style.module.scss'
 import { PostsList } from 'entities/Posts/ui/PostsList'
 import { PostsFilters } from 'widgets/PostsFilters'
 import { PostsPagination } from 'widgets/PostsPagination'
-import { changeSplitedPosts, fetchPostsAsync } from 'app/store/slices/mainSlice'
 import { splitPosts } from 'entities/Posts/helpers/splitPosts'
+import { changeSplitedPosts, fetchPostsAsync } from 'app/store/slices/postsSlice'
 
 export const Main: FC = () => {
-    const posts = useAppSelector(state => state.main.posts)
-    const isPostFetching = useAppSelector(state => state.main.isPostFetching)
-    const postFetchingError = useAppSelector(state => state.main.postFetchingError)
+    const posts = useAppSelector(state => state.posts.posts)
+    const isPostFetching = useAppSelector(state => state.posts.isPostFetching)
+    const postFetchingError = useAppSelector(state => state.posts.postFetchingError)
 
-    const splitedPosts = useAppSelector(state => state.main.splitedPosts)
+    const splitedPosts = useAppSelector(state => state.posts.splitedPosts)
 
-    const displayedPostsCount = useAppSelector(state => state.main.displayedPostsCount)
+    const displayedPostsCount = useAppSelector(state => state.posts.displayedPostsCount)
     const activePaginationIndex = useAppSelector(state => state.main.activePaginationIndex)
 
     const dispatch = useAppDispatch()

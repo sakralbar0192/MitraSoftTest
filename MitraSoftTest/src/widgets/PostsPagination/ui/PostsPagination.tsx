@@ -6,7 +6,7 @@ import { changeActivePaginationIndex } from 'app/store/slices/mainSlice'
 
 export const PostsPagination: FC = () => {
     const MIN_POSTS_ARRAY_FOR_DISPLAYED_PAGINATION = 2
-    const splitedPosts = useAppSelector(state => state.main.splitedPosts)
+    const splitedPosts = useAppSelector(state => state.posts.splitedPosts)
     const activePaginationIndex = useAppSelector(state => state.main.activePaginationIndex)
     const dispatch = useAppDispatch()
 

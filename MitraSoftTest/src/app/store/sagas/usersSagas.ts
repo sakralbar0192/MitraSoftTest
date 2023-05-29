@@ -2,8 +2,8 @@ import {  call, put, takeLatest } from 'redux-saga/effects'
 import { DEFAULT_ERROR_MESSAGE, REQUEST_FAILED_MESSAGE } from 'shared/consts'
 import { IGetUserPostsResponse, getUserPosts } from 'app/api/getUserPosts'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { fetchUser, fetchUserAsync, fetchUserFailed, fetchUserPosts, fetchUserPostsAsync, fetchUserPostsFailed, setActiveUser, setActiveUserPosts } from '../slices/mainSlice'
 import { IGetUserResponse, getUser } from 'app/api/getUser'
+import { fetchUser, fetchUserAsync, fetchUserFailed, fetchUserPosts, fetchUserPostsAsync, fetchUserPostsFailed, setActiveUser, setActiveUserPosts } from '../slices/usersSlice'
 
 function* asyncFetchUser(action: PayloadAction<number>) {
     let response: IGetUserResponse = {
@@ -33,7 +33,6 @@ function* asyncFetchUserPosts(action: PayloadAction<number>){
     try {
         yield put(fetchUserPosts())
         response = yield call(getUserPosts, action.payload)
-        yield new Promise(res=> setTimeout(() => res(true), 500))
         if (response.isSucceeded) {
             yield put(setActiveUserPosts( response.data || []))
         } else {

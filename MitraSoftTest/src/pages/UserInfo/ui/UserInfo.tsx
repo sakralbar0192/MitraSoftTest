@@ -3,37 +3,38 @@ import { type FC, useLayoutEffect } from 'react'
 import {  Link, useParams } from 'react-router-dom'
 import classes from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import { IUserHistory, fetchUserAsync, fetchUserPostsAsync, setActiveUser, setActiveUserPosts, setUsersInfo,  } from 'app/store/slices/mainSlice'
 import { Loader } from 'widgets/Loader'
 import { ErrorPlug } from 'widgets/ErrorPlug'
 import { PostsList } from 'entities/Posts/ui/PostsList'
 import { FIRST_ARRAY_ITEM_INDEX } from 'shared/consts'
+import { IUserPostsHistory, setUserPostsHistory } from 'app/store/slices/historySlice'
+import { fetchUserAsync, fetchUserPostsAsync, setActiveUser, setActiveUserPosts } from 'app/store/slices/usersSlice'
 
 export const UserInfo: FC = () => {
     const { userId } = useParams() as {userId: string}
 
-    const posts = useAppSelector(state => state.main.posts)
+    const posts = useAppSelector(state => state.posts.posts)
 
-    const activeUser = useAppSelector(state => state.main.activeUser)
-    const activeUserPosts = useAppSelector(state => state.main.activeUserPosts)
+    const activeUser = useAppSelector(state => state.users.activeUser)
+    const activeUserPosts = useAppSelector(state => state.users.activeUserPosts)
 
-    const isUserFetching = useAppSelector(state => state.main.isUserFetching)
-    const userFetchingError = useAppSelector(state => state.main.userFetchingError)
+    const isUserFetching = useAppSelector(state => state.users.isUserFetching)
+    const userFetchingError = useAppSelector(state => state.users.userFetchingError)
 
-    const isUserPostsFetching = useAppSelector(state => state.main.isUserPostsFetching)
-    const userPostsFetchingError = useAppSelector(state => state.main.userPostsFetchingError)
+    const isUserPostsFetching = useAppSelector(state => state.users.isUserPostsFetching)
+    const userPostsFetchingError = useAppSelector(state => state.users.userPostsFetchingError)
 
-    const usersInfo = useAppSelector(state => state.main.usersHistory)
+    const usersPostsHistory = useAppSelector(state => state.history.usersPostsHistory)
 
     const dispatch = useAppDispatch()
 
     useLayoutEffect(() => {
         const currentUserId = Number(userId)
-        const existingUserInfo  = usersInfo.find(item => item.user.id === currentUserId)
+        const existingUserHistory  = usersPostsHistory.find(historyItem => historyItem.user.id === currentUserId)
 
-        if (existingUserInfo) {
-            dispatch(setActiveUser(existingUserInfo.user))
-            dispatch(setActiveUserPosts(existingUserInfo.posts))
+        if (existingUserHistory) {
+            dispatch(setActiveUser(existingUserHistory.user))
+            dispatch(setActiveUserPosts(existingUserHistory.posts))
         } else {
             if (!activeUser || activeUser.id !== currentUserId) {
                 dispatch(fetchUserAsync(currentUserId))
@@ -52,15 +53,15 @@ export const UserInfo: FC = () => {
 
         return function() {
             if (activeUser && activeUserPosts) {
-                const userInfo: IUserHistory = {
+                const userHistory: IUserPostsHistory = {
                     user: activeUser,
                     posts: activeUserPosts
                 }
 
-                const isCurrentUserInfoExist = usersInfo.find(item => item.user.id === activeUser.id)
+                const isCurrentUserHistoryExist = usersPostsHistory.find(item => item.user.id === activeUser.id)
 
-                if (!isCurrentUserInfoExist) {
-                    dispatch(setUsersInfo([...usersInfo, userInfo]))
+                if (!isCurrentUserHistoryExist) {
+                    dispatch(setUserPostsHistory([...usersPostsHistory, userHistory]))
                 }
             }
         }
