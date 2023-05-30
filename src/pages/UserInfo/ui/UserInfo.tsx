@@ -10,7 +10,7 @@ import { FIRST_ARRAY_ITEM_INDEX } from 'shared/consts'
 import { IUserPostsHistory, setUserPostsHistory } from 'app/store/slices/historySlice'
 import { fetchUserAsync, fetchUserPostsAsync, setActiveUser, setActiveUserPosts } from 'app/store/slices/usersSlice'
 
-export const UserInfo: FC = () => {
+const UserInfo: FC = () => {
     const { userId } = useParams() as {userId: string}
 
     const posts = useAppSelector(state => state.posts.posts)
@@ -93,3 +93,5 @@ export const UserInfo: FC = () => {
         </>
     )
 }
+
+export default UserInfo

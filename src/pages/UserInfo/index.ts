@@ -1,3 +1,3 @@
-import { UserInfo } from './ui/UserInfo'
+import { UserInfoAsync } from './ui/UserInfoAsync'
 
-export { UserInfo }
+export { UserInfoAsync as UserInfo }

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import classes from './styles.module.scss'
 
-export const AboutMe: FC = () => {
+const AboutMe: FC = () => {
 
     return (
         <div className={ classes.aboutMeWrapper }>
@@ -18,3 +18,5 @@ export const AboutMe: FC = () => {
         </div>
     )
 }
+
+export default AboutMe

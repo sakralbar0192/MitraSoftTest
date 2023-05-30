@@ -14,7 +14,7 @@ export interface IPostCardProps {
 export const PostCard: FC<IPostCardProps> = ({ post, showAvatar = true }) => {
 
     return (
-        <Card style={ { width: '400px' } }>
+        <Card style={ { width: '300px' } }>
             <Card.Header as='h5' className={ classes.header }>
                 {
                     showAvatar &&

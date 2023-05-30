@@ -9,7 +9,7 @@ import { PostsPagination } from 'widgets/PostsPagination'
 import { splitPosts } from 'entities/Posts/helpers/splitPosts'
 import { changeSplitedPosts, fetchPostsAsync } from 'app/store/slices/postsSlice'
 
-export const Main: FC = () => {
+const Main: FC = () => {
     const posts = useAppSelector(state => state.posts.posts)
     const isPostFetching = useAppSelector(state => state.posts.isPostFetching)
     const postFetchingError = useAppSelector(state => state.posts.postFetchingError)
@@ -54,3 +54,5 @@ export const Main: FC = () => {
         </div>
     )
 }
+
+export default Main

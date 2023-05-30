@@ -1,3 +1,3 @@
-import { Main } from './ui/Main'
+import { MainAsync } from './ui/MainAsync'
 
-export{ Main }
+export{ MainAsync as Main }
