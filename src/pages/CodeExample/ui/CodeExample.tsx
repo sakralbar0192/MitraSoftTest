@@ -5,41 +5,15 @@ import { ECodeExamples } from 'app/codeExamples'
 
 const CodeExample: FC = () => {
     const { choosenExample } = useParams() as {choosenExample: ECodeExamples}
-    const [iframe, setIframe] = useState<string>('')
+    const [projectFolder, setprojectFolder] = useState<ECodeExamples | ''>('')
 
     useEffect(() => {
-        switch (choosenExample) {
-            case ECodeExamples.SMART_DEVICE:
-                setIframe(
-                    '<iframe className={ classes.iframe } src="/MitraSoftTest/smartDevice/index.html"></iframe>'
-                )
-                break
-            case ECodeExamples.JEVELLERY:
-                setIframe(
-                    '<iframe className={ classes.iframe } src="/MitraSoftTest/jevellery/index.html"></iframe>'
-                )
-                break
-            case ECodeExamples.EUROPE:
-                setIframe(
-                    '<iframe className={ classes.iframe } src="/MitraSoftTest/europe/index.html"></iframe>'
-                )
-                break
-            case ECodeExamples.BICYCLE:
-                setIframe(
-                    '<iframe className={ classes.iframe } src="/MitraSoftTest/bicycle/index.html"></iframe>'
-                )
-                break
-            case ECodeExamples.MISHKA:
-                setIframe(
-                    '<iframe className={ classes.iframe } src="/MitraSoftTest/mishka/index.html"></iframe>'
-                )
-                break
-        }
+        setprojectFolder(choosenExample)
     }, [choosenExample])
 
     return (
         <div
-            dangerouslySetInnerHTML={ { __html: iframe } }
+            dangerouslySetInnerHTML={ { __html: `<iframe className={ classes.iframe } src="/MitraSoftTest/${projectFolder}/index.html"></iframe>` } }
             className={ classes.iframeWrapper }
         />
     )

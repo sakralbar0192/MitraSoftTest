@@ -36,7 +36,7 @@ export const AppHeader = () => {
                     <b>Code Examples</b>
                     <ul>
                         <li>
-                            <span>Layout</span>
+                            <span>Layouts</span>
                             <ul>
                                 <NavLinkItem
                                     codeExamples={ ECodeExamples.SMART_DEVICE }
@@ -57,6 +57,15 @@ export const AppHeader = () => {
                                 <NavLinkItem
                                     codeExamples={ ECodeExamples.BICYCLE }
                                     text='Bicycle'
+                                />
+                            </ul>
+                        </li>
+                        <li>
+                            <span>Apps</span>
+                            <ul>
+                                <NavLinkItem
+                                    codeExamples={ ECodeExamples.KEKSOBOOKING }
+                                    text='Keksobooking'
                                 />
                             </ul>
                         </li>
