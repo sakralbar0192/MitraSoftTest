@@ -7,9 +7,18 @@ export const ECodeExamples = {
     BICYCLE: 'bicycle',
     MISHKA: 'mishka',
     KEKSOBOOKING: 'keksobooking',
-    TASK_LIST: 'taskList',
-    DISPEX: 'dispex',
-    CHILDREN_DATA: 'childrenData',
     POKEDEX: 'pokedex'
 } as const
 export type ECodeExamples = TValueOf<typeof ECodeExamples>
+
+export const ECodeExamplesLinksHrefs = {
+    SMART_DEVICE: 'https://github.com/sakralbar0192/smart-device',
+    JEVELLERY: 'https://github.com/sakralbar0192/Jewellery',
+    EUROPE: 'https://github.com/sakralbar0192/Europe',
+    BICYCLE: 'https://github.com/sakralbar0192/uhov-bicycles',
+    MISHKA: 'https://github.com/sakralbar0192/Mishka',
+    KEKSOBOOKING: 'https://github.com/sakralbar0192/Keksobooking',
+    POKEDEX: 'https://github.com/sakralbar0192/PokeDex',
+    POSTS_LIST: 'https://github.com/sakralbar0192/MitraSoftTest'
+} as const
+export type ECodeExamplesLinksHrefs = TValueOf<typeof ECodeExamplesLinksHrefs>

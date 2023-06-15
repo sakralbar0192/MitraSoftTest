@@ -2,10 +2,12 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export interface IMainSliceInitialState {
     activePaginationIndex: number,
+    codeExampleSourceLinkHref: string
 }
 
 const initialState: IMainSliceInitialState = {
-    activePaginationIndex: 0
+    activePaginationIndex: 0,
+    codeExampleSourceLinkHref: ''
 }
 
 const mainSlice = createSlice({
@@ -23,13 +25,20 @@ const mainSlice = createSlice({
                 ...state,
                 activePaginationIndex: 0
             }
+        },
+        setCodeExampleSourceLinkHref: (state, action: PayloadAction<string>) => {
+            return {
+                ...state,
+                codeExampleSourceLinkHref: action.payload
+            }
         }
     }
 })
 
 export const {
     changeActivePaginationIndex,
-    resetActivePaginationIndex
+    resetActivePaginationIndex,
+    setCodeExampleSourceLinkHref
 } = mainSlice.actions
 
 export default mainSlice.reducer

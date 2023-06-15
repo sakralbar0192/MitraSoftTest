@@ -1,7 +1,14 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import classes from './styles.module.scss'
+import { useAppDispatch } from 'app/hooks'
+import { setCodeExampleSourceLinkHref } from 'app/store/slices/mainSlice'
 
 const AboutMe: FC = () => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(setCodeExampleSourceLinkHref(''))
+    }, [])
 
     return (
         <div className={ classes.aboutMeWrapper }>

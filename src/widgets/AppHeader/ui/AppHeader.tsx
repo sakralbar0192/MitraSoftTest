@@ -6,8 +6,10 @@ import { NavLink } from 'react-router-dom'
 import { AboutMeCard } from 'widgets/AboutMeCard'
 import { ECodeExamples } from 'app/codeExamples'
 import { NavLinkItem } from 'widgets/NavLinkItem'
+import { useAppSelector } from 'app/hooks'
 
 export const AppHeader = () => {
+    const codeExampleSourceLinkHref = useAppSelector(state => state.main.codeExampleSourceLinkHref)
     const [show, setShow] = useState(false)
 
     const handleClose = () => setShow(false)
@@ -22,6 +24,7 @@ export const AppHeader = () => {
             >
                 <Burger_menu />
             </button>
+            {codeExampleSourceLinkHref && <a href={ codeExampleSourceLinkHref }>Source code</a>}
 
             <Offcanvas show={ show } onHide={ handleClose }>
                 <Offcanvas.Header closeButton />
@@ -29,6 +32,7 @@ export const AppHeader = () => {
                     <NavLink
                         className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
                         to=''
+                        onClick={ handleClose }
                     >
                         About me
                     </NavLink>
@@ -39,24 +43,29 @@ export const AppHeader = () => {
                             <span>Layouts</span>
                             <ul>
                                 <NavLinkItem
-                                    codeExamples={ ECodeExamples.SMART_DEVICE }
+                                    to={ ECodeExamples.SMART_DEVICE }
                                     text='Smart Device'
+                                    onClick={ handleClose }
                                 />
                                 <NavLinkItem
-                                    codeExamples={ ECodeExamples.JEVELLERY }
+                                    to={ ECodeExamples.JEVELLERY }
                                     text='Jewellery'
+                                    onClick={ handleClose }
                                 />
                                 <NavLinkItem
-                                    codeExamples={ ECodeExamples.EUROPE }
+                                    to={ ECodeExamples.EUROPE }
                                     text='Europe'
+                                    onClick={ handleClose }
                                 />
                                 <NavLinkItem
-                                    codeExamples={ ECodeExamples.MISHKA }
+                                    to={ ECodeExamples.MISHKA }
                                     text='Mishka'
+                                    onClick={ handleClose }
                                 />
                                 <NavLinkItem
-                                    codeExamples={ ECodeExamples.BICYCLE }
+                                    to={ ECodeExamples.BICYCLE }
                                     text='Bicycle'
+                                    onClick={ handleClose }
                                 />
                             </ul>
                         </li>
@@ -67,17 +76,20 @@ export const AppHeader = () => {
                                     <NavLink
                                         className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
                                         to='PostsList'
+                                        onClick={ handleClose }
                                     >
                                         Posts list
                                     </NavLink>
                                 </li>
                                 <NavLinkItem
-                                    codeExamples={ ECodeExamples.POKEDEX }
+                                    to={ ECodeExamples.POKEDEX }
                                     text='Pokedex'
+                                    onClick={ handleClose }
                                 />
                                 <NavLinkItem
-                                    codeExamples={ ECodeExamples.KEKSOBOOKING }
+                                    to={ ECodeExamples.KEKSOBOOKING }
                                     text='Keksobooking'
+                                    onClick={ handleClose }
                                 />
                             </ul>
                         </li>

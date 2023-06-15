@@ -4,16 +4,18 @@ import { NavLink } from 'react-router-dom'
 import classes from './style.module.scss'
 
 interface INavLinkItemProps {
-    codeExamples: ECodeExamples
+    to: ECodeExamples
     text: string
+    onClick?: () => void
 }
 
-export const NavLinkItem: FC<INavLinkItemProps> = ({ codeExamples, text }) => {
+export const NavLinkItem: FC<INavLinkItemProps> = ({ to, text, onClick }) => {
     return (
         <li>
             <NavLink
                 className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
-                to={ 'CodeExample/' + codeExamples }
+                to={ 'CodeExample/' + to }
+                onClick={ onClick }
             >
                 {text}
             </NavLink>

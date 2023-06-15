@@ -8,6 +8,8 @@ import { PostsFilters } from 'widgets/PostsFilters'
 import { PostsPagination } from 'widgets/PostsPagination'
 import { splitPosts } from 'entities/Posts/helpers/splitPosts'
 import { changeSplitedPosts, fetchPostsAsync } from 'app/store/slices/postsSlice'
+import { ECodeExamplesLinksHrefs } from 'app/codeExamples'
+import { setCodeExampleSourceLinkHref } from 'app/store/slices/mainSlice'
 
 const Main: FC = () => {
     const posts = useAppSelector(state => state.posts.posts)
@@ -28,6 +30,8 @@ const Main: FC = () => {
             const splitedPosts = splitPosts(posts, displayedPostsCount)
             dispatch(changeSplitedPosts(splitedPosts))
         }
+
+        dispatch(setCodeExampleSourceLinkHref(ECodeExamplesLinksHrefs.POSTS_LIST))
     }, [])
 
     return (
