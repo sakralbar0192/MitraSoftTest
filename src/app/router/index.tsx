@@ -16,7 +16,7 @@ const router = createHashRouter([
                 element: <AboutMe />
             },
             {
-                path: 'UserInfo/:userId',
+                path: 'PostsList/UserInfo/:userId',
                 element: <UserInfo />
             },
             {
