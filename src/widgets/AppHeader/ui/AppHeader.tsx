@@ -28,7 +28,7 @@ export const AppHeader = () => {
                 <Offcanvas.Body className={ classes.sidebarContainer }>
                     <NavLink
                         className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
-                        to='AboutMe'
+                        to=''
                     >
                         About me
                     </NavLink>
@@ -71,7 +71,6 @@ export const AppHeader = () => {
                                         Posts list
                                     </NavLink>
                                 </li>
-                                
                                 <NavLinkItem
                                     codeExamples={ ECodeExamples.POKEDEX }
                                     text='Pokedex'
