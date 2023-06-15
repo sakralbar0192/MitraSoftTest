@@ -67,6 +67,10 @@ export const AppHeader = () => {
                                     codeExamples={ ECodeExamples.KEKSOBOOKING }
                                     text='Keksobooking'
                                 />
+                                <NavLinkItem
+                                    codeExamples={ ECodeExamples.TASK_LIST }
+                                    text='Task List'
+                                />
                             </ul>
                         </li>
                     </ul>
