@@ -63,6 +63,16 @@ export const AppHeader = () => {
                         <li>
                             <span>Apps</span>
                             <ul>
+                                <NavLink
+                                    className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
+                                    to='PostsList'
+                                >
+                                    Posts list
+                                </NavLink>
+                                <NavLinkItem
+                                    codeExamples={ ECodeExamples.POKEDEX }
+                                    text='Pokedex'
+                                />
                                 <NavLinkItem
                                     codeExamples={ ECodeExamples.KEKSOBOOKING }
                                     text='Keksobooking'

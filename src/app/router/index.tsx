@@ -12,7 +12,7 @@ const router = createHashRouter([
         element: <App />,
         children: [
             {
-                path: 'AboutMe',
+                path: '',
                 element: <AboutMe />
             },
             {
@@ -20,7 +20,7 @@ const router = createHashRouter([
                 element: <UserInfo />
             },
             {
-                path: '',
+                path: 'PostsList',
                 element: <Main />
             },
             {
