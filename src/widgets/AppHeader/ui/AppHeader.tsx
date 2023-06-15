@@ -58,14 +58,6 @@ export const AppHeader = () => {
                                     codeExamples={ ECodeExamples.BICYCLE }
                                     text='Bicycle'
                                 />
-                                <li>
-                                    <NavLink
-                                        className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
-                                        to={ 'CodeExample/' + ECodeExamples.BICYCLE }
-                                    >
-                                        Bicycle
-                                    </NavLink>
-                                </li>
                             </ul>
                         </li>
                     </ul>
