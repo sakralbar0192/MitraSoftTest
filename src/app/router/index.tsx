@@ -4,6 +4,7 @@ import App from 'app/App'
 import { AboutMe } from 'pages/AboutMe'
 import { UserInfo } from 'pages/UserInfo'
 import { Main } from 'pages/Main'
+import { CodeExample } from 'pages/SampleCode'
 
 const router = createHashRouter([
     {
@@ -21,6 +22,10 @@ const router = createHashRouter([
             {
                 path: '',
                 element: <Main />
+            },
+            {
+                path: '/CodeExample/:choosenExample',
+                element: <CodeExample />
             }
         ],
         errorElement: <ErrorBoundary />

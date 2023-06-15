@@ -1,0 +1,7 @@
+.iframeWrapper iframe {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    min-width: 100vw;
+    min-height: calc(100vh - 60px);
+}

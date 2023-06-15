@@ -30,7 +30,7 @@ const UserInfo: FC = () => {
 
     useLayoutEffect(() => {
         const currentUserId = Number(userId)
-        const existingUserHistory  = usersPostsHistory.find(historyItem => historyItem.user.id === currentUserId)
+        const existingUserHistory = usersPostsHistory.find(historyItem => historyItem.user.id === currentUserId)
 
         if (existingUserHistory) {
             dispatch(setActiveUser(existingUserHistory.user))
