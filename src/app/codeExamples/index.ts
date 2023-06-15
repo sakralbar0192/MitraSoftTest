@@ -7,6 +7,7 @@ export const ECodeExamples = {
     BICYCLE: 'bicycle',
     MISHKA: 'mishka',
     KEKSOBOOKING: 'keksobooking',
-    TASK_LIST: 'taskList'
+    TASK_LIST: 'taskList',
+    DISPEX: 'dispex',
 } as const
 export type ECodeExamples = TValueOf<typeof ECodeExamples>
