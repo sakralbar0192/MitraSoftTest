@@ -4,7 +4,7 @@ import App from 'app/App'
 import { AboutMe } from 'pages/AboutMe'
 import { UserInfo } from 'pages/UserInfo'
 import { Main } from 'pages/Main'
-import { CodeExample } from 'pages/SampleCode'
+import { CodeExample } from 'pages/CodeExample'
 
 const router = createHashRouter([
     {

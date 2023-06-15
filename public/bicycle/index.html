@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="сайт для покупки велосипедов">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="preload" href="fonts/open-sans-300.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/open-sans-400.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/open-sans-600.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/open-sans-700.woff2" as="font" crossorigin="anonymous">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Bicycles</title>
+</head>
+<body id="body">
+<header class="main-header">
+  <div class="main-header__container">
+    <div class="main-header__hero-image-block">
+      <picture>
+        <source type="image/webp" srcset="img/hero-image.webp 1x, img/hero-image@2x.webp 2x">
+        <!-- 1х: 1440px; 2x: 2880px -->
+        <img src="img/hero-image.jpg" srcset="img/hero-image@2x.jpg 2x" alt="Велосипед" width="1440" height="825">
+      </picture>
+    </div>
+    <nav class="main-header__nav" id="navigation">
+      <div class="main-header__nav-overlay" id="navigation-overlay"></div>
+      <button class="main-header__nav-toggle" id="navigation-toggle">
+        <span>Показать/скрыть меню</span>
+      </button>
+      <ul class="main-header__nav-list">
+        <li class="main-header__nav-list-item">
+          <a href="#features" class="main-header__nav-link">О нас</a>
+        </li>
+        <li class="main-header__nav-list-item">
+          <a href="#types" class="main-header__nav-link">Виды велосипедов</a>
+        </li>
+        <li class="main-header__nav-list-item">
+          <a href="#video" class="main-header__nav-link">Видео про велосипеды</a>
+        </li>
+        <li class="main-header__nav-list-item">
+          <a href="#contacts" class="main-header__nav-link">Контакты</a>
+        </li>
+      </ul>
+    </nav>
+    <a class="main-header__logo-block">
+      <img src="img/content-logo.svg" alt="MooN" width="68" height="20">
+    </a>
+    <div class="main-header__title-block">
+      <h1>Мы продаем велосипеды</h1>
+      <p>Наш магазин отбирает только самые лучшие велосипеды для продажи</p>
+    </div>
+    <form class="main-header__form" action="https://echo.htmlacademy.ru/" method="POST" id="form">
+      <p>Заполните поля ниже и мы подберем велосипед Вашей мечты</p>
+      <div class="main-header__form-inputs-wrapper">
+        <label>
+          <span>введите ваше имя</span>
+          <input type="text" placeholder="Введите Ваше Имя" name="email" id="input-field" required="">
+        </label>
+        <label>
+          <span>введите ваш номер телефона</span>
+          <input id="tel-input" type="tel" placeholder="Введите Ваш номер телефона" data-inputmask="'mask': '+7-999-999-99-99'" name="tel" required="">
+        </label>
+      </div>
+      <button type="submit" id="submit-button">Подобрать велосипед мечты</button>
+    </form>
+  </div>
+</header>
+<main class="page-main">
+  <section class="features" id="features">
+    <h2>Несколько фактов о нас</h2>
+    <ul class="features__list">
+      <li class="features__item" id="01">Самый широкий выбор велосипедов!</li>
+      <li class="features__item" id="02">Доставка велосипедов по всей России!</li>
+      <li class="features__item" id="03">Большой выбор крутых аксессуаров!</li>
+      <li class="features__item" id="04">Профессиональные консультации!</li>
+    </ul>
+  </section>
+  <section class="bicycles-types" id="types">
+    <h2>Виды велосипедов</h2>
+    <ul class="bicycles-types__gallery">
+      <li class="bicycles-types__gallery-item">
+        <div class="bicycles-types__image-wrapper">
+          <picture>
+            <source type="image/webp" srcset="img/bicycle-01.webp 1x, img/bicycle-01@2x.webp 2x">
+            <!-- 1х: 342px; 2x: 684px -->
+            <img src="img/bicycle-01.jpg" srcset="img/bicycle-01@2x.jpg 2x" alt="Дорожный велосипед" width="342" height="503">
+          </picture>
+        </div>
+        <span>Дорожный велосипед</span>
+      </li>
+      <li class="bicycles-types__gallery-item">
+        <div class="bicycles-types__image-wrapper">
+          <picture>
+            <source type="image/webp" srcset="img/bicycle-02.webp 1x, img/bicycle-02@2x.webp 2x">
+            <!-- 1х: 342px; 2x: 684px -->
+            <img src="img/bicycle-02.jpg" srcset="img/bicycle-02@2x.jpg 2x" alt="Горный велосипед" width="342" height="503">
+          </picture>
+        </div>
+        <span>Горный велосипед</span>
+      </li>
+      <li class="bicycles-types__gallery-item">
+        <div class="bicycles-types__image-wrapper">
+          <picture>
+            <source type="image/webp" srcset="img/bicycle-03.webp 1x, img/bicycle-03@2x.webp 2x">
+            <!-- 1х: 342px; 2x: 684px -->
+            <img src="img/bicycle-03.jpg" srcset="img/bicycle-03@2x.jpg 2x" alt="Детский велосипед" width="342" height="503">
+          </picture>
+        </div>
+        <span>Детский велосипед</span>
+      </li>
+    </ul>
+  </section>
+  <section class="bicycles-video" id="video">
+    <div class="bicycles-video__container">
+      <div class="bicycles-video__title-block">
+        <h2>Видео про велосипеды</h2>
+        <p>В этом видео мы подробно расскажем про особенности выбора велосипеда для себя.</p>
+      </div>
+      <div class="bicycles-video__video-block">
+        <div class="bicycles-video__video-wrapper">
+          <picture>
+            <source type="image/webp" srcset="img/bicycles-video.webp 1x, img/bicycles-video@2x.webp 2x">
+            <!-- 1х: 930px; 2x: 1860px -->
+            <img src="img/bicycles-video.png" srcset="img/bicycles-video@2x.png 2x" alt="Видео о велосипедах" width="929" height="522" loading="lazy">
+          </picture>
+        </div>
+        <button class="bicycles-video__play-button" type="button">
+          <span>играть видео</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="page-footer" id="contacts">
+  <h2>Как нас найти?</h2>
+  <p>Мы находимся по адресу: Санкт-Петербург, ул. Большая Конюшенная, д. 19</p>
+  <div class="page-footer__map-wrapper">
+    <div class="page-footer__iframe-wrapper">
+      <iframe title="Интерактивная карта" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.5991043651609!2d30.320894616366456!3d59.93879418187622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fca5ba729%3A0xea9c53d4493c879f!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sIDE5LCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywgMTkxMTg2!5e0!3m2!1sru!2sru!4v1619497754499!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="page-footer__image-wrapper">
+      <picture>
+        <source type="image/webp" srcset="img/map.webp 1x, img/map@2x.webp 2x">
+        <!-- 1х: 957px; 2x: 1914px -->
+        <img src="img/map.png" srcset="img/map@2x.png 2x" alt="Карта" width="698" height="545" loading="lazy">
+      </picture>
+    </div>
+  </div>
+  <ul class="page-footer__contacts">
+    <li>
+      <a href="mailto:puteshestviemechta@gmail.ru" class="page-footer__contact-link">
+        <svg class="page-footer__svg page-footer__svg--mail" width="26" height="20">
+          <use xlink:href="img/sprite_auto.svg#icon-mail"></use>
+        </svg>
+        puteshestviemechta@gmail.ru
+      </a>
+    </li>
+    <li>
+      <a href="tel:+7(499)-784-684-46" class="page-footer__contact-link page-footer__contact-link--tel">
+        <svg class="page-footer__svg page-footer__svg--tel" width="21" height="23">
+          <use xlink:href="img/sprite_auto.svg#icon-phone"></use>
+        </svg>
+        +7 (499) -784-684-46
+      </a>
+    </li>
+  </ul>
+</footer>
+<script src="js/vendor.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
