@@ -63,12 +63,15 @@ export const AppHeader = () => {
                         <li>
                             <span>Apps</span>
                             <ul>
-                                <NavLink
-                                    className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
-                                    to='PostsList'
-                                >
-                                    Posts list
-                                </NavLink>
+                                <li>
+                                    <NavLink
+                                        className={ ({ isActive, isPending }) => isPending ? 'pending' : isActive ? classes.active : '' }
+                                        to='PostsList'
+                                    >
+                                        Posts list
+                                    </NavLink>
+                                </li>
+                                
                                 <NavLinkItem
                                     codeExamples={ ECodeExamples.POKEDEX }
                                     text='Pokedex'
@@ -76,10 +79,6 @@ export const AppHeader = () => {
                                 <NavLinkItem
                                     codeExamples={ ECodeExamples.KEKSOBOOKING }
                                     text='Keksobooking'
-                                />
-                                <NavLinkItem
-                                    codeExamples={ ECodeExamples.CHILDREN_DATA }
-                                    text='Children data'
                                 />
                             </ul>
                         </li>
