@@ -69,7 +69,7 @@ const UserInfo: FC = () => {
 
     return (
         <>
-            <Link to='/'>Back home</Link>
+            <Link to='/PostsPage'>Back home</Link>
             <div className={ classes.container }>
                 {
                     activeUser
