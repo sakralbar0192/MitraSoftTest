@@ -9,5 +9,6 @@ export const ECodeExamples = {
     KEKSOBOOKING: 'keksobooking',
     TASK_LIST: 'taskList',
     DISPEX: 'dispex',
+    CHILDREN_DATA: 'childrenData'
 } as const
 export type ECodeExamples = TValueOf<typeof ECodeExamples>
