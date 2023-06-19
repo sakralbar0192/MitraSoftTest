@@ -11,5 +11,5 @@ export default defineConfig({
             exportAsDefault: true
         })
     ],
-    base: '/MitraSoftTest'
+    base: ''
 })

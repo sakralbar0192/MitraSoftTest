@@ -51,7 +51,7 @@ const CodeExample: FC = () => {
 
     return (
         <div
-            dangerouslySetInnerHTML={ { __html: `<iframe className={ classes.iframe } src="/MitraSoftTest/${projectFolder}/index.html"></iframe>` } }
+            dangerouslySetInnerHTML={ { __html: `<iframe className={ classes.iframe } src="${projectFolder}/index.html"></iframe>` } }
             className={ classes.iframeWrapper }
         />
     )
