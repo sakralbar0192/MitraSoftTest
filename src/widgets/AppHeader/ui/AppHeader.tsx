@@ -91,11 +91,12 @@ export const AppHeader = () => {
                                     text='Keksobooking'
                                     onClick={ handleClose }
                                 />
-                                <NavLinkItem
-                                    to={ ECodeExamples.CYBER_ZILLA }
-                                    text='CyberZilla'
+                                <a
+                                    href='https://sakralbar0192.github.io/CyberZilla/#/'
                                     onClick={ handleClose }
-                                />
+                                >
+                                    CyberZilla
+                                </a>
                             </ul>
                         </li>
                     </ul>
