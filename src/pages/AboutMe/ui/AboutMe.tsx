@@ -18,9 +18,9 @@ const AboutMe: FC = () => {
             <p>Сборщики: Webpack, Gulp, Vite</p>
             <p>Фреймворки: React, Vue, Lit</p>
             <p>Unit тесты: jest</p>
-            <p>Вспомогательные инструменты: Redux, Redux-Saga, React-Bootstrap, React-Router, EsLint, StyleLint, StoryBook</p>
+            <p>Вспомогательные инструменты: Redux, Redux-Saga, React-Bootstrap, React-Router, Vue-router, Vuex, Composition Api, Vuetify, Pinia, EsLint, StyleLint, StoryBook</p>
             <p>Английский язык: на уровне чтения документации</p>
-            <p>Пишу валидный читаемый код на TypeSript, настраиваю конфигурацию проекта</p>
+            <p>Пишу валидный читаемый код на TypeSript</p>
             <p>Быстро учусь, неконфликтен</p>
         </div>
     )
