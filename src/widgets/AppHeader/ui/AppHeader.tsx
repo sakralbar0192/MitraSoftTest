@@ -91,6 +91,11 @@ export const AppHeader = () => {
                                     text='Keksobooking'
                                     onClick={ handleClose }
                                 />
+                                <NavLinkItem
+                                    to={ ECodeExamples.CYBER_ZILLA }
+                                    text='CyberZilla'
+                                    onClick={ handleClose }
+                                />
                             </ul>
                         </li>
                     </ul>

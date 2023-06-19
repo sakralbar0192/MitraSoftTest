@@ -7,7 +7,8 @@ export const ECodeExamples = {
     BICYCLE: 'bicycle',
     MISHKA: 'mishka',
     KEKSOBOOKING: 'keksobooking',
-    POKEDEX: 'pokedex'
+    POKEDEX: 'pokedex',
+    CYBER_ZILLA: 'cyberZilla'
 } as const
 export type ECodeExamples = TValueOf<typeof ECodeExamples>
 
@@ -19,6 +20,7 @@ export const ECodeExamplesLinksHrefs = {
     MISHKA: 'https://github.com/sakralbar0192/Mishka',
     KEKSOBOOKING: 'https://github.com/sakralbar0192/Keksobooking',
     POKEDEX: 'https://github.com/sakralbar0192/PokeDex',
-    POSTS_LIST: 'https://github.com/sakralbar0192/MitraSoftTest'
+    POSTS_LIST: 'https://github.com/sakralbar0192/MitraSoftTest',
+    CYBER_ZILLA: 'https://github.com/sakralbar0192/CyberZilla'
 } as const
 export type ECodeExamplesLinksHrefs = TValueOf<typeof ECodeExamplesLinksHrefs>
