@@ -7,9 +7,7 @@ export default defineConfig({
     plugins: [
         react(),
         tsconfigPaths(),
-        svgr({
-            exportAsDefault: true
-        })
+        svgr({ exportAsDefault: true })
     ],
     base: ''
 })
