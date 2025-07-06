@@ -126,6 +126,25 @@ export const AppHeader = () => {
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <span>Bots</span>
+                            <ul>
+                                <li>
+                                    <OverlayTrigger
+                                        placement='right'
+                                        delay={ { show: 250, hide: 400 } }
+                                        overlay={ <Tooltip id='button-tooltip'>
+                                                bunJS, TelegrafJS, Typescript, Sequelize, Postgres
+                                        </Tooltip> }
+                                    >
+                                        <a href='https://t.me/RacketMateBot' target='_blank'>
+                                            RacketMate
+                                        </a>
+                                    </OverlayTrigger>
+
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <AboutMeCard />
